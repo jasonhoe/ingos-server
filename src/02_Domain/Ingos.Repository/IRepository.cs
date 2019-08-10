@@ -3,7 +3,7 @@
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/27 16:58:17
+// Created DateTime: 2019/8/10 11:04:49
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ingos.Domain.Repository
+namespace Ingos.Repository
 {
     public interface IRepository<T> where T : IAggregateRoot
     {

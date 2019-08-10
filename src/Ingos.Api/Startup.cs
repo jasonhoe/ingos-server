@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ingos.Api.Core.Extension.ApiVersion;
-using Ingos.Api.Core.Extension.Swagger;
+using AutoMapper;
+using Ingos.Api.Core.Extensions.ApiVersion;
+using Ingos.Api.Core.Extensions.Swagger;
+using Ingos.EntityFrameworkCore.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -36,6 +39,10 @@ namespace Ingos.Api
                 // Add cors authorization filter
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Config mysql server database connection
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
 
             // Use lowercase urls router mode
             services.AddRouting(options =>

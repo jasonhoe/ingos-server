@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ingos.Aggregate\Ingos.Aggregate.csproj" />
-    <ProjectReference Include="..\Ingos.Repository\Ingos.Repository.csproj" />
   </ItemGroup>
 
 </Project>

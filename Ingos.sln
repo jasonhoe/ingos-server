@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.EntityFrameworkCore",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Application", "src\03_Application\Ingos.Application\Ingos.Application.csproj", "{D12090D9-8D2B-44C2-BAFF-B8F8F61B505E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Api", "src\Ingos.Api\Ingos.Api.csproj", "{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api", "src\Ingos.Api\Ingos.Api.csproj", "{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{24F390D4-42F7-4449-B765-77FD4D6BD1D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Repository", "src\02_Domain\Ingos.Repository\Ingos.Repository.csproj", "{EAE18C48-D7F1-4B66-9EBA-2D6C7B16DE0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE18C48-D7F1-4B66-9EBA-2D6C7B16DE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE18C48-D7F1-4B66-9EBA-2D6C7B16DE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE18C48-D7F1-4B66-9EBA-2D6C7B16DE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE18C48-D7F1-4B66-9EBA-2D6C7B16DE0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{8479F36D-8B0D-4F30-ACED-D21356EF84E2} = {6B7A7895-6E89-439C-8726-AB5A1CDB982C}
 		{D12090D9-8D2B-44C2-BAFF-B8F8F61B505E} = {411B80F8-CB09-46B5-8AFB-3958DA82B791}
 		{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4} = {30192F3C-5578-4073-A7E3-BD81F0BD51DA}
+		{EAE18C48-D7F1-4B66-9EBA-2D6C7B16DE0C} = {D9C9E226-728C-470C-A6B4-DEFD9A272A0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0C78475-05DA-409F-88B6-5B7FFD91EAA2}

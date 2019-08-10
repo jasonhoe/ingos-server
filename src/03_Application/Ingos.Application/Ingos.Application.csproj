@@ -9,4 +9,8 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

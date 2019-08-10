@@ -8,6 +8,10 @@ WORKDIR /src
 COPY ["src/Ingos.Api/Ingos.Api.csproj", "src/Ingos.Api/"]
 COPY ["src/01_Infrastructure/Ingos.Api.Core/Ingos.Api.Core.csproj", "src/01_Infrastructure/Ingos.Api.Core/"]
 COPY ["src/03_Application/Ingos.Application/Ingos.Application.csproj", "src/03_Application/Ingos.Application/"]
+COPY ["src/02_Domain/Ingos.Domain/Ingos.Domain.csproj", "src/02_Domain/Ingos.Domain/"]
+COPY ["src/02_Domain/Ingos.Aggregate/Ingos.Aggregate.csproj", "src/02_Domain/Ingos.Aggregate/"]
+COPY ["src/02_Domain/Ingos.Repository/Ingos.Repository.csproj", "src/02_Domain/Ingos.Repository/"]
+COPY ["src/01_Infrastructure/Ingos.EntityFrameworkCore/Ingos.EntityFrameworkCore.csproj", "src/01_Infrastructure/Ingos.EntityFrameworkCore/"]
 RUN dotnet restore "src/Ingos.Api/Ingos.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Ingos.Api"

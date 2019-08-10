@@ -11,7 +11,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Linq;
 
-namespace Ingos.Api.Core.Extension.Swagger
+namespace Ingos.Api.Core.Extensions.Swagger
 {
     public class RemoveVersionFromParameter : IOperationFilter
     {

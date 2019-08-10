@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ingos.Api.Core.Extension.ApiVersion
+namespace Ingos.Api.Core.Extensions.ApiVersion
 {
     public static class ApiVersionExtension
     {
