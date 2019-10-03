@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
+using System;
 
 namespace Ingos.Api
 {
@@ -14,11 +10,34 @@ namespace Ingos.Api
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            // Use NLog to catch all errors
+            //
+            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+
+            try
+            {
+                logger.Info("Ingos.Api Init logging");
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Ingos.Api has been stopped because of this error");
+                throw;
+            }
+            finally
+            {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureLogging(logger =>
+                {
+                    logger.ClearProviders();
+                    logger.SetMinimumLevel(LogLevel.Trace);
+                })
+                .UseNLog();
     }
 }

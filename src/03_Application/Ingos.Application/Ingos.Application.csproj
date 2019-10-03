@@ -13,4 +13,10 @@
     <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Ingos.Application.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

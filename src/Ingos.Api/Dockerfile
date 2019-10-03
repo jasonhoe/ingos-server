@@ -15,12 +15,12 @@ COPY ["src/01_Infrastructure/Ingos.EntityFrameworkCore/Ingos.EntityFrameworkCore
 RUN dotnet restore "src/Ingos.Api/Ingos.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Ingos.Api"
-RUN dotnet build "Ingos.Api.csproj" -c Release -o /app
+RUN dotnet build "Ingos.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Ingos.Api.csproj" -c Release -o /app
+RUN dotnet publish "Ingos.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Ingos.Api.dll"]
