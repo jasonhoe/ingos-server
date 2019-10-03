@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Ingos.Api.Core.Extensions.ApiVersion;
+﻿using Ingos.Api.Core.Extensions.ApiVersion;
 using Ingos.Api.Core.Extensions.Swagger;
 using Ingos.EntityFrameworkCore.DbContexts;
+using Ingos.Infrastructure.AutoMapper.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Ingos.Api
 {
@@ -39,6 +35,9 @@ namespace Ingos.Api
                 // Add cors authorization filter
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Config automapper mapping rules
+            services.AddAutoMapperProfiles();
 
             // Config mysql server database connection
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -63,8 +62,6 @@ namespace Ingos.Api
                 .AllowAnyMethod()
                 .AllowCredentials()));
 
-            services.AddOptions();
-
             // Add swagger api doc support
             services.AddSwagger(new SwaggerDescriptionOptions
             {
@@ -73,7 +70,7 @@ namespace Ingos.Api
                 Url = "https://yuiter.com",
                 Description = "Ingos.API 接口文档",
                 Title = "Ingos.API",
-                Paths = new List<string> { "Ingos.Api.xml", "Ingos.Application.xml" }
+                Paths = new List<string> { "Ingos.Api.xml", "Ingos.Dto.xml" }
             });
         }
 

@@ -10,13 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Ingos.Application.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\..\02_Domain\Ingos.Aggregate\Ingos.Aggregate.csproj" />
+    <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
+    <ProjectReference Include="..\Ingos.Dto\Ingos.Dto.csproj" />
   </ItemGroup>
 
 </Project>

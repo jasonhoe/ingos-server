@@ -7,7 +7,7 @@
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
-using Ingos.Application.User.Dtos;
+using Ingos.Dto.BaseModule.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,7 +29,7 @@ namespace Ingos.Api.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IList<UserListDto>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(IList<AppUserListDto>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
         public IActionResult Get()
@@ -38,7 +38,7 @@ namespace Ingos.Api.Controllers.v1
 
             // 2、Determine if the request was successful
             if (true)
-                return Ok(new List<UserListDto>());
+                return Ok(new List<AppUserListDto>());
             else
                 return BadRequest(new
                 {
@@ -54,13 +54,13 @@ namespace Ingos.Api.Controllers.v1
         /// <param name="id">用户唯一标识</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(UserEditDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AppUserEditDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType(typeof(UserEditDto))]
+        [ProducesDefaultResponseType(typeof(AppUserEditDto))]
         public IActionResult Get(string id)
         {
             // 1、Get resource data by id
-            UserEditDto user = null;
+            AppUserEditDto user = null;
 
             if (user == null)
                 return NotFound();
@@ -74,9 +74,9 @@ namespace Ingos.Api.Controllers.v1
         /// <param name="search">搜索用户信息数据传输对象</param>
         /// <returns></returns>
         [HttpGet("query")]
-        [ProducesResponseType(typeof(IEnumerable<UserListDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<AppUserListDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Get([FromQuery]UserSearchDto search)
+        public IActionResult Get([FromQuery]AppUserListSearchDto search)
         {
             return Ok();
         }
@@ -86,11 +86,11 @@ namespace Ingos.Api.Controllers.v1
         /// </summary>
         /// <param name="edit">用户编辑信息数据传输对象</param>
         [HttpPost]
-        [ProducesResponseType(typeof(UserEditDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(AppUserEditDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Post([FromBody] UserEditDto edit)
+        public IActionResult Post([FromBody] AppUserEditDto edit)
         {
-            return Created("", new UserEditDto());
+            return Created("", new AppUserEditDto());
         }
 
         /// <summary>
@@ -100,9 +100,9 @@ namespace Ingos.Api.Controllers.v1
         /// <param name="edit">用户编辑信息数据传输对象</param>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(UserEditDto), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(AppUserEditDto), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult Put(string id, [FromBody] UserEditDto edit)
+        public IActionResult Put(string id, [FromBody] AppUserEditDto edit)
         {
             return Ok();
         }
@@ -113,7 +113,7 @@ namespace Ingos.Api.Controllers.v1
         /// <param name="id">用户唯一标识</param>
         [HttpPut("{id}/refresh")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(UserEditDto), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(AppUserEditDto), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Put(string id)
         {
@@ -126,7 +126,7 @@ namespace Ingos.Api.Controllers.v1
         /// <param name="id">用户唯一标识</param>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(UserEditDto), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(AppUserEditDto), StatusCodes.Status404NotFound)]
         public IActionResult Delete(string id)
         {
             return Delete(id);

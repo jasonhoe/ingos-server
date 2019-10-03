@@ -1,23 +1,19 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "IngosProfiles.cs">
+// <copyright file= "AppUserListSearchDto.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/8/10 11:21:07
+// Created DateTime: 2019/10/3 21:00:57 
 // Modified by:
-// Description:
+// Description: 
 //-----------------------------------------------------------------------
-using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ingos.Infrastructure.AutoMapper
+namespace Ingos.Dto.BaseModule.Users
 {
-    public class IngosProfiles : Profile
+    public class AppUserListSearchDto
     {
-        public IngosProfiles()
-        {
-        }
     }
 }

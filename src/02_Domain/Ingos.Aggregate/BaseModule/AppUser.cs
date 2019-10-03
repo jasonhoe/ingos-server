@@ -1,16 +1,19 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "UserAppService.cs">
+// <copyright file= "AppUser.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/20 22:19:37
+// Created DateTime: 2019/10/3 21:34:12
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Ingos.Application.User
+namespace Ingos.Aggregate.BaseModule
 {
-    public class UserAppService : IUserAppService
+    public class AppUser : EntityBase
     {
     }
 }

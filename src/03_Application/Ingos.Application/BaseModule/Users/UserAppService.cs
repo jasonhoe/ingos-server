@@ -1,19 +1,20 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "IUserAppService.cs">
+// <copyright file= "UserAppService.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/27 17:07:32
+// Created DateTime: 2019/10/3 20:52:05
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
+using Ingos.Application.BaseModule.Users.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ingos.Application.User
+namespace Ingos.Application.BaseModule.Users
 {
-    public interface IUserAppService
+    public class UserAppService : IUserAppService
     {
     }
 }
