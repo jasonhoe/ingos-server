@@ -17,7 +17,7 @@ namespace Ingos.Api.Core.Extensions.ApiVersion
         /// Add api version support
         /// </summary>
         /// <param name="services">The instance of <see cref="IServiceCollection"/></param>
-        public static void AddApiVersion(this IServiceCollection services)
+        public static IServiceCollection AddApiVersion(this IServiceCollection services)
         {
             // Add api version support
             services.AddApiVersioning(o =>
@@ -41,6 +41,8 @@ namespace Ingos.Api.Core.Extensions.ApiVersion
                 // when not specifying an api version, select the default version
                 option.AssumeDefaultVersionWhenUnspecified = true;
             });
+
+            return services;
         }
     }
 }

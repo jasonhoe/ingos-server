@@ -5,12 +5,13 @@
 // Author: Danvic.Wang
 // Created DateTime: 2019/7/27 16:34:40
 // Modified by:
-// Description: Swagger configuraion's extension method
+// Description: Swagger configuration's extension method
 //-----------------------------------------------------------------------
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -18,8 +19,17 @@ namespace Ingos.Api.Core.Extensions.Swagger
 {
     public static class SwaggerExtension
     {
-        public static void AddSwagger(this IServiceCollection services)
+        /// <summary>
+        /// Add swagger doc support
+        /// </summary>
+        /// <param name="services">The instance of <see cref="IServiceCollection"/></param>
+        /// <param name="options">The instance of <see cref="SwaggerDescriptionOptions"/></param>
+        public static IServiceCollection AddSwagger(this IServiceCollection services, SwaggerDescriptionOptions options)
         {
+            // Get the doc config options
+            if (options == null)
+                throw new ArgumentNullException("The swagger's configuration options is null");
+
             // Config swagger doc info
             services.AddSwaggerGen(s =>
             {
@@ -33,12 +43,12 @@ namespace Ingos.Api.Core.Extensions.Swagger
                     {
                         Contact = new Contact
                         {
-                            Name = "Danvic Wang",
-                            Email = "danvic96@hotmail.com",
-                            Url = "https://yuiter.com"
+                            Name = options.Name,
+                            Email = options.Email,
+                            Url = options.Url
                         },
-                        Description = "Ingos.API 接口文档",
-                        Title = "Ingos.API",
+                        Description = options.Description,
+                        Title = options.Title,
                         Version = description.ApiVersion.ToString()
                     });
                 }
@@ -62,12 +72,28 @@ namespace Ingos.Api.Core.Extensions.Swagger
                 s.OperationFilter<RemoveVersionFromParameter>();
 
                 // Get project's api description file
+                //
                 var basePath = Path.GetDirectoryName(AppContext.BaseDirectory);
-                var apiPath = Path.Combine(basePath, "Ingos.Api.xml");
-                var dtoPath = Path.Combine(basePath, "Ingos.Application.xml");
-                s.IncludeXmlComments(apiPath, true);
-                s.IncludeXmlComments(dtoPath, true);
+                foreach (var xml in GetApiDocPaths(options, basePath))
+                {
+                    s.IncludeXmlComments(xml, true);
+                }
             });
+
+            return services;
+        }
+
+        /// <summary>
+        /// Get the api description doc path
+        /// </summary>
+        /// <param name="options">The instance of <see cref="SwaggerDescriptionOptions"/></param>
+        /// <param name="basePath">The site's base running files path</param>
+        /// <returns></returns>
+        private static IEnumerable<string> GetApiDocPaths(SwaggerDescriptionOptions options, string basePath)
+        {
+            return from path in options.Paths
+                   let xml = Path.Combine(basePath, path)
+                   select xml;
         }
     }
 }

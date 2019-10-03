@@ -63,8 +63,18 @@ namespace Ingos.Api
                 .AllowAnyMethod()
                 .AllowCredentials()));
 
+            services.AddOptions();
+
             // Add swagger api doc support
-            services.AddSwagger();
+            services.AddSwagger(new SwaggerDescriptionOptions
+            {
+                Name = "Danvic Wang",
+                Email = "danvic96@hotmail.com",
+                Url = "https://yuiter.com",
+                Description = "Ingos.API 接口文档",
+                Title = "Ingos.API",
+                Paths = new List<string> { "Ingos.Api.xml", "Ingos.Application.xml" }
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
