@@ -12,7 +12,7 @@ namespace Ingos.Api
         {
             // Use NLog to catch all errors
             //
-            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            var logger = NLogBuilder.ConfigureNLog("Configurations/nlog.config").GetCurrentClassLogger();
 
             try
             {
