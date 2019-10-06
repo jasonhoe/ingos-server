@@ -1,6 +1,6 @@
 ﻿using Ingos.Api.Core.Extensions.ApiVersion;
 using Ingos.Api.Core.Extensions.Swagger;
-using Ingos.EntityFrameworkCore.DbContexts;
+using Ingos.Domain.BaseModule.Users.Repositories;
 using Ingos.Infrastructure.AutoMapper.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,7 +40,7 @@ namespace Ingos.Api
             services.AddAutoMapperProfiles();
 
             // Config mysql server database connection
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<AppUserContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
 
             // Use lowercase urls router mode

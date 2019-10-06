@@ -37,7 +37,7 @@ namespace Ingos.Infrastructure.AutoMapper.Extensions
                 // The base mapping profile class's type
                 var parentType = typeof(Profile);
 
-                foreach (var item in assemblies.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var item in assemblies.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     // Get all class which inheritance Profile class
                     //

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "BaseModuleProfiles.cs">
+// <copyright file= "BaseModuleProfile.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -8,23 +8,20 @@
 // Description: Base module's automapper mapping configuration file
 //-----------------------------------------------------------------------
 using AutoMapper;
-using Ingos.Aggregate.BaseModule;
+using Ingos.Aggregate.BaseModule.Users;
 using Ingos.Dto.BaseModule.Users;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ingos.Application.BaseModule
 {
     /// <summary>
     /// Base module's automapper mapping rules
     /// </summary>
-    public class BaseModuleProfiles : Profile
+    public class BaseModuleProfile : Profile
     {
         /// <summary>
         /// The autoMapper mapping configuration rules
         /// </summary>
-        public BaseModuleProfiles()
+        public BaseModuleProfile()
         {
             // user mapping rules
             //

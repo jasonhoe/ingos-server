@@ -1,19 +1,19 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "EntityBase.cs">
+// <copyright file= "Enumeration.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/27 16:45:27
+// Created DateTime: 2019/7/27 16:48:45
 // Modified by:
-// Description: Generic base domain object class
+// Description:
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ingos.Aggregate
+namespace Ingos.Aggregate.SeedWork
 {
-    public class EntityBase
+    public class Enumeration
     {
     }
 }

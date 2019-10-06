@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Ingos.Aggregate\Ingos.Aggregate.csproj" />
-    <ProjectReference Include="..\Ingos.Repository\Ingos.Repository.csproj" />
   </ItemGroup>
 
 </Project>

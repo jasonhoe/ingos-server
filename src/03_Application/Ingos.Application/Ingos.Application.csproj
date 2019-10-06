@@ -11,12 +11,18 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\02_Domain\Ingos.Aggregate\Ingos.Aggregate.csproj" />
     <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
     <ProjectReference Include="..\Ingos.Dto\Ingos.Dto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BaseModule\Users\Behaviors\" />
+    <Folder Include="BaseModule\Users\Commands\" />
   </ItemGroup>
 
 </Project>

@@ -3,17 +3,14 @@
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/8/10 11:05:11
+// Created DateTime: 2019/10/4 16:32:50
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ingos.Repository
+namespace Ingos.Aggregate.SeedWork.Contracts
 {
     public interface IUnitOfWork
     {

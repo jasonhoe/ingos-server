@@ -4,12 +4,12 @@
         <name>Ingos.Application</name>
     </assembly>
     <members>
-        <member name="T:Ingos.Application.BaseModule.BaseModuleProfiles">
+        <member name="T:Ingos.Application.BaseModule.BaseModuleProfile">
             <summary>
             Base module's automapper mapping rules
             </summary>
         </member>
-        <member name="M:Ingos.Application.BaseModule.BaseModuleProfiles.#ctor">
+        <member name="M:Ingos.Application.BaseModule.BaseModuleProfile.#ctor">
             <summary>
             The autoMapper mapping configuration rules
             </summary>

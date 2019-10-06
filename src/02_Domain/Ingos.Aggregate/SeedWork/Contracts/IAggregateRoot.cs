@@ -8,7 +8,7 @@
 // Description:
 //-----------------------------------------------------------------------
 
-namespace Ingos.Aggregate
+namespace Ingos.Aggregate.SeedWork.Contracts
 {
     public interface IAggregateRoot
     {
