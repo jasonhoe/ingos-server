@@ -21,18 +21,21 @@ namespace Ingos.Infrastructure.AutoMapper.Extensions
         /// <summary>
         /// Inject AutoMapper into IServiceCollection
         /// </summary>
-        /// <param name="services">The instance of <see cref="IServiceCollection"/></param>
+        /// <param name="services">The services that need to be injected into the container <see cref="IServiceCollection"/></param>
         /// <param name="setupAction">The instance of Ingos AutoMapper config options</param>
         /// <returns></returns>
         public static IServiceCollection AddIngosAutoMapperProfiles(this IServiceCollection services,
             Action<IngosAutoMapperOptions> setupAction)
         {
+            if (setupAction == null)
+                throw new ArgumentNullException(nameof(setupAction));
+
             // Get config options
             //
             var options = new IngosAutoMapperOptions();
             setupAction?.Invoke(options);
 
-            return AddAutoMapperServices(services, options);
+            return AddAutoMapperService(services, options);
         }
 
         /// <summary>
@@ -41,11 +44,8 @@ namespace Ingos.Infrastructure.AutoMapper.Extensions
         /// <param name="services">The instance of service collections</param>
         /// <param name="options">The instance of Ingos AutoMapper config options</param>
         /// <returns></returns>
-        private static IServiceCollection AddAutoMapperServices(IServiceCollection services, IngosAutoMapperOptions options)
+        private static IServiceCollection AddAutoMapperService(IServiceCollection services, IngosAutoMapperOptions options)
         {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
-
             var profiles = new List<Type>();
 
             // The base mapping profile class's type

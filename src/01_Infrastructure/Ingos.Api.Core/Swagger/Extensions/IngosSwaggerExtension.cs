@@ -20,19 +20,22 @@ namespace Ingos.Api.Core.Swagger.Extensions
     public static class IngosSwaggerExtension
     {
         /// <summary>
-        /// Add swagger doc support
+        /// Inject Swagger into IServiceCollection
         /// </summary>
         /// <param name="services">The services that need to be injected into the container <see cref="IServiceCollection"/></param>
-        /// <param name="setupAction"></param>
+        /// <param name="setupAction">The instance of Ingos Swagger config options <see cref="IngosSwaggerDescriptionOptions"/></param>
         public static IServiceCollection AddIngosSwagger(this IServiceCollection services,
             Action<IngosSwaggerDescriptionOptions> setupAction)
         {
+            if (setupAction == null)
+                throw new ArgumentNullException(nameof(setupAction));
+
             // Get swagger config options
             //
             var options = new IngosSwaggerDescriptionOptions();
             setupAction?.Invoke(options);
 
-            return AddSwaggerServices(services, options);
+            return AddSwaggerService(services, options);
         }
 
         /// <summary>
@@ -41,12 +44,8 @@ namespace Ingos.Api.Core.Swagger.Extensions
         /// <param name="services">The collection of services</param>
         /// <param name="options">The swagger config options</param>
         /// <returns></returns>
-        private static IServiceCollection AddSwaggerServices(IServiceCollection services, IngosSwaggerDescriptionOptions options)
+        private static IServiceCollection AddSwaggerService(IServiceCollection services, IngosSwaggerDescriptionOptions options)
         {
-            // Get the swagger doc config options
-            //if (options == null)
-            //    throw new ArgumentNullException(nameof(options));
-
             // Config swagger doc info
             services.AddSwaggerGen(s =>
             {
