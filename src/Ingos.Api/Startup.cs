@@ -1,15 +1,17 @@
-﻿using Ingos.Api.Core.Extensions.ApiVersion;
-using Ingos.Api.Core.Extensions.Swagger;
-using Ingos.Domain.BaseModule.Users.Repositories;
+﻿using Ingos.Api.Core.ApiVersion.Extensions;
+using Ingos.Api.Core.Swagger;
+using Ingos.Api.Core.Swagger.Extensions;
+using Ingos.Infrastructure.AutoMapper;
 using Ingos.Infrastructure.AutoMapper.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,17 +33,16 @@ namespace Ingos.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(
-                // Add cors authorization filter
-                options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
-            ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers();
 
             // Config automapper mapping rules
-            services.AddAutoMapperProfiles();
+            //services.AddIngosAutoMapperProfiles(options =>
+            //{
+            //});
 
             // Config mysql server database connection
-            services.AddDbContext<AppUserContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
+            //services.AddDbContext<AppUserContext>(options =>
+            //    options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
 
             // Use lowercase urls router mode
             services.AddRouting(options =>
@@ -50,7 +51,7 @@ namespace Ingos.Api
             });
 
             // Config api version
-            services.AddApiVersion();
+            services.AddIngosApiVersion();
 
             // Config cors policy
             services.AddCors(options => options.AddPolicy(_defaultCorsPolicyName,
@@ -59,23 +60,27 @@ namespace Ingos.Api
                         .Split(",", StringSplitOptions.RemoveEmptyEntries).ToArray()
                     )
                 .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials()));
+                .AllowAnyMethod()));
 
             // Add swagger api doc support
-            services.AddSwagger(new SwaggerDescriptionOptions
+            services.AddIngosSwagger(options =>
             {
-                Name = "Danvic Wang",
-                Email = "danvic96@hotmail.com",
-                Url = "https://yuiter.com",
-                Description = "Ingos.API 接口文档",
-                Title = "Ingos.API",
-                Paths = new List<string> { "Ingos.Api.xml", "Ingos.Dto.xml" }
+                options.Name = "Danvic Wang";
+                options.Email = "danvic96@hotmail.com";
+                options.Url = new Uri("https://yuiter.com");
+                options.Description = "Ingos.API 接口文档";
+                options.Title = "Ingos.API";
+                options.License = new OpenApiLicense
+                {
+                    Name = "MIT",
+                    Url = new Uri("https://opensource.org/licenses/MIT")
+                };
+                options.Paths = new List<string> { "Ingos.Api.xml" };
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -92,7 +97,12 @@ namespace Ingos.Api
             // Allow cross domain request
             app.UseCors(_defaultCorsPolicyName);
 
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             // Enable swagger doc
             app.UseSwagger();
@@ -103,7 +113,7 @@ namespace Ingos.Api
                 foreach (var description in provider.ApiVersionDescriptions.Reverse())
                 {
                     s.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-                        $"Sample API {description.GroupName.ToUpperInvariant()}");
+                        $"Ingos API {description.GroupName.ToUpperInvariant()}");
                 }
             });
         }

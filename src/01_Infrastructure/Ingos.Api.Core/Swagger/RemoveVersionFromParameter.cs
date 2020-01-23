@@ -3,24 +3,21 @@
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/27 16:38:23
+// Created DateTime: 2020/1/23 13:03:24
 // Modified by:
 // Description: Remove api version param from swagger doc
 //-----------------------------------------------------------------------
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Linq;
 
-namespace Ingos.Api.Core.Extensions.Swagger
+namespace Ingos.Api.Core.Swagger
 {
-    /// <summary>
-    /// Remove api version param from swagger doc
-    /// </summary>
     public class RemoveVersionFromParameter : IOperationFilter
     {
-        public void Apply(Operation operation, OperationFilterContext context)
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-            var versionParameter = operation.Parameters.Single(p => p.Name == "version");
+            var versionParameter = operation.Parameters.FirstOrDefault(p => p.Name == "version");
             operation.Parameters.Remove(versionParameter);
         }
     }

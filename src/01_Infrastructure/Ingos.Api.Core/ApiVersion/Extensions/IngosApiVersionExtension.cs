@@ -1,23 +1,23 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ApiVersionExtension.cs">
+// <copyright file= "IngosApiVersionExtension.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/27 16:42:00
+// Created DateTime: 2020/1/23 11:00:19
 // Modified by:
-// Description: Api version extension method
+// Description: Ingos custom api version dependency injection method
 //-----------------------------------------------------------------------
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ingos.Api.Core.Extensions.ApiVersion
+namespace Ingos.Api.Core.ApiVersion.Extensions
 {
-    public static class ApiVersionExtension
+    public static class IngosApiVersionExtension
     {
         /// <summary>
-        /// Add api version support
+        /// Inject api version into IServiceCollection
         /// </summary>
-        /// <param name="services">The instance of <see cref="IServiceCollection"/></param>
-        public static IServiceCollection AddApiVersion(this IServiceCollection services)
+        /// <param name="services">The services that need to be injected into the container <see cref="IServiceCollection"/></param>
+        public static IServiceCollection AddIngosApiVersion(this IServiceCollection services)
         {
             // Add api version support
             services.AddApiVersioning(o =>
@@ -36,7 +36,7 @@ namespace Ingos.Api.Core.Extensions.ApiVersion
             services.AddVersionedApiExplorer(option =>
             {
                 // Set api version group name format
-                option.GroupNameFormat = "'v'VVVV";
+                option.GroupNameFormat = "'v'VVV";
 
                 // when not specifying an api version, select the default version
                 option.AssumeDefaultVersionWhenUnspecified = true;

@@ -1,47 +1,57 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "SwaggerDescriptionOptions.cs">
+// <copyright file= "IngosSwaggerDescriptionOptions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/10/3 10:35:02
+// Created DateTime: 2020/1/23 12:51:28
 // Modified by:
-// Description: Swagger doc configuraion item
+// Description: Ingos swagger custom config options
 //-----------------------------------------------------------------------
-
+using Microsoft.OpenApi.Models;
+using System;
 using System.Collections.Generic;
 
-namespace Ingos.Api.Core.Extensions.Swagger
+namespace Ingos.Api.Core.Swagger
 {
-    public class SwaggerDescriptionOptions
+    public class IngosSwaggerDescriptionOptions
     {
+        #region Attributes
+
         /// <summary>
-        /// The author's name
+        /// Author's name
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// The author's email address
+        /// Author's email address
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// The author's website address
+        /// Author's site address
         /// </summary>
-        public string Url { get; set; }
+        public Uri Url { get; set; }
 
         /// <summary>
-        /// The api's description
+        /// This api's description
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// The title of swagger doc show
+        /// The title of this application
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
+        /// The api's open source license
+        /// </summary>
+        public OpenApiLicense License { get; set; }
+
+        /// <summary>
         /// The collection of api description xml files
         /// </summary>
-        public IList<string> Paths { get; set; }
+        public IEnumerable<string> Paths { get; set; }
+
+        #endregion Attributes
     }
 }

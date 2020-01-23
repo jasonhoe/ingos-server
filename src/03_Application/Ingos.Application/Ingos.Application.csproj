@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,14 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\02_Domain\Ingos.Aggregate\Ingos.Aggregate.csproj" />
     <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
-    <ProjectReference Include="..\Ingos.Dto\Ingos.Dto.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BaseModule\Users\Behaviors\" />
-    <Folder Include="BaseModule\Users\Commands\" />
-  </ItemGroup>
-
 </Project>

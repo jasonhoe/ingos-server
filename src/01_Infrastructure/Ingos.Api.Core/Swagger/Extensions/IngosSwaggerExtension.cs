@@ -1,34 +1,51 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "SwaggerExtension.cs">
+// <copyright file= "IngosSwaggerExtension.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2019/7/27 16:34:40
+// Created DateTime: 2020/1/23 11:07:12
 // Modified by:
-// Description: Swagger configuration's extension method
+// Description: Ingos custom swagger dependency injection method
 //-----------------------------------------------------------------------
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Ingos.Api.Core.Extensions.Swagger
+namespace Ingos.Api.Core.Swagger.Extensions
 {
-    public static class SwaggerExtension
+    public static class IngosSwaggerExtension
     {
         /// <summary>
         /// Add swagger doc support
         /// </summary>
-        /// <param name="services">The instance of <see cref="IServiceCollection"/></param>
-        /// <param name="options">The instance of <see cref="SwaggerDescriptionOptions"/></param>
-        public static IServiceCollection AddSwagger(this IServiceCollection services, SwaggerDescriptionOptions options)
+        /// <param name="services">The services that need to be injected into the container <see cref="IServiceCollection"/></param>
+        /// <param name="setupAction"></param>
+        public static IServiceCollection AddIngosSwagger(this IServiceCollection services,
+            Action<IngosSwaggerDescriptionOptions> setupAction)
         {
-            // Get the doc config options
-            if (options == null)
-                throw new ArgumentNullException("The swagger's configuration options is null");
+            // Get swagger config options
+            //
+            var options = new IngosSwaggerDescriptionOptions();
+            setupAction?.Invoke(options);
+
+            return AddSwaggerServices(services, options);
+        }
+
+        /// <summary>
+        /// Add Swagger
+        /// </summary>
+        /// <param name="services">The collection of services</param>
+        /// <param name="options">The swagger config options</param>
+        /// <returns></returns>
+        private static IServiceCollection AddSwaggerServices(IServiceCollection services, IngosSwaggerDescriptionOptions options)
+        {
+            // Get the swagger doc config options
+            //if (options == null)
+            //    throw new ArgumentNullException(nameof(options));
 
             // Config swagger doc info
             services.AddSwaggerGen(s =>
@@ -39,16 +56,17 @@ namespace Ingos.Api.Core.Extensions.Swagger
 
                 foreach (var description in provider.ApiVersionDescriptions)
                 {
-                    s.SwaggerDoc(description.GroupName, new Info
+                    s.SwaggerDoc(description.GroupName, new OpenApiInfo
                     {
-                        Contact = new Contact
+                        Contact = new OpenApiContact
                         {
                             Name = options.Name,
                             Email = options.Email,
-                            Url = options.Url
+                            Url = options.Url,
                         },
                         Description = options.Description,
                         Title = options.Title,
+                        License = options.License,
                         Version = description.ApiVersion.ToString()
                     });
                 }
@@ -56,6 +74,7 @@ namespace Ingos.Api.Core.Extensions.Swagger
                 // Show api version in the url which swagger doc generated
                 s.DocInclusionPredicate((version, apiDescription) =>
                 {
+                    // Just show this version's api
                     if (!version.Equals(apiDescription.GroupName))
                         return false;
 
@@ -73,11 +92,12 @@ namespace Ingos.Api.Core.Extensions.Swagger
 
                 // Get project's api description file
                 //
-                var basePath = Path.GetDirectoryName(AppContext.BaseDirectory);
-                foreach (var xml in GetApiDocPaths(options, basePath))
-                {
-                    s.IncludeXmlComments(xml, true);
-                }
+                var paths = options.Paths ?? Array.Empty<string>();
+                if (!paths.Any())
+                    return;
+
+                GetApiDocPaths(paths, Path.GetDirectoryName(AppContext.BaseDirectory))
+                    .ForEach(x => s.IncludeXmlComments(x, true));
             });
 
             return services;
@@ -86,14 +106,16 @@ namespace Ingos.Api.Core.Extensions.Swagger
         /// <summary>
         /// Get the api description doc path
         /// </summary>
-        /// <param name="options">The instance of <see cref="SwaggerDescriptionOptions"/></param>
+        /// <param name="paths">The xml file path</param>
         /// <param name="basePath">The site's base running files path</param>
         /// <returns></returns>
-        private static IEnumerable<string> GetApiDocPaths(SwaggerDescriptionOptions options, string basePath)
+        private static List<string> GetApiDocPaths(IEnumerable<string> paths, string basePath)
         {
-            return from path in options.Paths
-                   let xml = Path.Combine(basePath, path)
-                   select xml;
+            var xmls = from path in paths
+                       let xml = Path.Combine(basePath, path)
+                       select xml;
+
+            return xmls.ToList();
         }
     }
 }
