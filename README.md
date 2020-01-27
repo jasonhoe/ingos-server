@@ -18,7 +18,7 @@ a product management software's back-end api project which adopt ddd thought and
 
 # technologies
 
-![ingos-server technologies](/docs/imgs/ingos-server technologies.png)
+![ingos-server technologies](./docs/imgs/ingos-server technologies.png "ingos-server technologies")
 
 
 
