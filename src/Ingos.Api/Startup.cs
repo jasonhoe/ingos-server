@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ingos.Api
 {
@@ -42,6 +43,10 @@ namespace Ingos.Api
             // Config mysql server database connection
             services.AddDbContext<IngosApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
+
+            // Config basic api's health checks
+            services.AddHealthChecks()
+                    .AddDbContextCheck<IngosApplicationDbContext>();
 
             // Use lowercase urls router mode
             services.AddRouting(options =>
@@ -101,6 +106,9 @@ namespace Ingos.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                // Config api addresses for health checks
+                endpoints.MapHealthChecks("/health");
             });
 
             // Enable swagger doc
@@ -114,6 +122,13 @@ namespace Ingos.Api
                     s.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
                         $"Ingos API {description.GroupName.ToUpperInvariant()}");
                 }
+            });
+
+            // Redirect to swagger page
+            app.Run(context =>
+            {
+                context.Response.Redirect("/swagger");
+                return Task.CompletedTask;
             });
         }
     }
