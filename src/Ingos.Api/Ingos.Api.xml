@@ -4,9 +4,9 @@
         <name>Ingos.Api</name>
     </assembly>
     <members>
-        <member name="M:Ingos.Api.Controllers.v1.VaulesController.Get">
+        <member name="M:Ingos.Api.Controllers.v1.ProductsController.Get">
             <summary>
-            Get all values
+            Get all products
             </summary>
             <returns></returns>
         </member>

@@ -1,8 +1,7 @@
 ﻿using Ingos.Api.Core.ApiVersion.Extensions;
 using Ingos.Api.Core.Swagger;
 using Ingos.Api.Core.Swagger.Extensions;
-using Ingos.Infrastructure.AutoMapper;
-using Ingos.Infrastructure.AutoMapper.Extensions;
+using Ingos.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,8 +40,8 @@ namespace Ingos.Api
             //});
 
             // Config mysql server database connection
-            //services.AddDbContext<AppUserContext>(options =>
-            //    options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
+            services.AddDbContext<IngosApplicationDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
 
             // Use lowercase urls router mode
             services.AddRouting(options =>
@@ -68,7 +67,7 @@ namespace Ingos.Api
                 options.Name = "Danvic Wang";
                 options.Email = "danvic96@hotmail.com";
                 options.Url = new Uri("https://yuiter.com");
-                options.Description = "Ingos.API 接口文档";
+                options.Description = "Ingos.API - A product management software's back-end web api project.";
                 options.Title = "Ingos.API";
                 options.License = new OpenApiLicense
                 {

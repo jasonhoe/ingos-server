@@ -1,6 +1,6 @@
 # ingos-server
 
-a product management software's back-end api project which adopt ddd thought and based on asp.net core web api.
+a product management software's back-end api project which adopt ddd and cqrs thoughts and based on asp.net core web api.
 
 
 
@@ -18,7 +18,7 @@ a product management software's back-end api project which adopt ddd thought and
 
 # technologies
 
-![ingos-server technologies](./docs/imgs/ingos-server technologies.png "ingos-server technologies")
+![ingos-server technologies introduce](./docs/imgs/ingos-server-technologies.png "ingos-server technologies introduce")
 
 
 
