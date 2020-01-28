@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Ingos.Infrastructure.MediatR.Extensions
+namespace Ingos.Module.Core.MediatR.Extensions
 {
     public static class IngosMediatRExtension
     {

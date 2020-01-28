@@ -1,28 +1,22 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "IngosMediatRDescriptionOptions.cs">
+// <copyright file= "IngosAutoMapperOptions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2020/1/23 20:45:08
+// Created DateTime: 2020/1/23 16:29:20
 // Modified by:
-// Description: Ingos custom mediatr config options
+// Description: Ingos custom automapper config options
 //-----------------------------------------------------------------------
-using System;
 using System.Collections.Generic;
 
-namespace Ingos.Infrastructure.MediatR
+namespace Ingos.Module.Core.AutoMapper
 {
-    public class IngosMediatRDescriptionOptions
+    public class IngosAutoMapperOptions
     {
         #region Attributes
 
         /// <summary>
-        /// Application startup‘s class type
-        /// </summary>
-        public Type StartupClassType { get; set; }
-
-        /// <summary>
-        /// The assemblies which contains mediator classes
+        /// The assemblies which contains mapper rules
         /// </summary>
         public IEnumerable<string> Assemblies { get; set; }
 

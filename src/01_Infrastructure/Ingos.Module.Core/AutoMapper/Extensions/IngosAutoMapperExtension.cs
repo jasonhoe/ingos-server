@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Ingos.Infrastructure.AutoMapper.Extensions
+namespace Ingos.Module.Core.AutoMapper.Extensions
 {
     public static class IngosAutoMapperExtension
     {

@@ -10,7 +10,7 @@
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace Ingos.Infrastructure.Configuration
+namespace Ingos.Module.Core.Configuration
 {
     public class ConfigurationManager
     {
