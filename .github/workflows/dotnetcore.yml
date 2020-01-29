@@ -16,4 +16,4 @@ jobs:
     - name: Get dotnet version info
       run: dotnet --info
     - name: Build with dotnet
-      run: dotnet build ../Ingos.Api.sln --configuration Release
+      run: dotnet build ./Ingos.Api.sln --configuration Release
