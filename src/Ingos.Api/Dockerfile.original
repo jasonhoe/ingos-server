@@ -8,8 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["src/Ingos.Api/Ingos.Api.csproj", "src/Ingos.Api/"]
-COPY ["src/01_Infrastructure/Core/Ingos.Api.Core/Ingos.Api.Core.csproj", "src/01_Infrastructure/Core/Ingos.Api.Core/"]
-COPY ["src/01_Infrastructure/Core/Ingos.Module.Core/Ingos.Module.Core.csproj", "src/01_Infrastructure/Core/Ingos.Module.Core/"]
+COPY ["src/01_Infrastructure/Ingos.Api.Core/Ingos.Api.Core.csproj", "src/01_Infrastructure/Ingos.Api.Core/"]
 COPY ["src/03_Application/Ingos.Application/Ingos.Application.csproj", "src/03_Application/Ingos.Application/"]
 COPY ["src/02_Domain/Ingos.Domain/Ingos.Domain.csproj", "src/02_Domain/Ingos.Domain/"]
 COPY ["src/01_Infrastructure/Ingos.Infrastructure/Ingos.Infrastructure.csproj", "src/01_Infrastructure/Ingos.Infrastructure/"]

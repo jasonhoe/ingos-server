@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Application", "src\03
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api", "src\Ingos.Api\Ingos.Api.csproj", "{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{24F390D4-42F7-4449-B765-77FD4D6BD1D8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Infrastructure", "src\01_Infrastructure\Ingos.Infrastructure\Ingos.Infrastructure.csproj", "{7F00C314-288A-45ED-A77F-5168C82DB3B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Domain", "src\02_Domain\Ingos.Domain\Ingos.Domain.csproj", "{2CBA17A1-FC8C-4027-B2C5-2806BDFBDA64}"
@@ -32,6 +30,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api.Core", "src\01_Infrastructure\Core\Ingos.Api.Core\Ingos.Api.Core.csproj", "{31F7BCC3-D203-4E55-82A9-4725184E2BBF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Module.Core", "src\01_Infrastructure\Core\Ingos.Module.Core\Ingos.Module.Core.csproj", "{3F75D6D2-53BE-4B2D-BA7A-3FF71A57FA6B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C47404FC-DB3D-4F70-ACD5-28F2C0E763E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +55,6 @@ Global
 		{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE58B0E2-0E14-43FC-AEAF-0DF482A06AC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24F390D4-42F7-4449-B765-77FD4D6BD1D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F00C314-288A-45ED-A77F-5168C82DB3B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F00C314-288A-45ED-A77F-5168C82DB3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F00C314-288A-45ED-A77F-5168C82DB3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +71,10 @@ Global
 		{3F75D6D2-53BE-4B2D-BA7A-3FF71A57FA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F75D6D2-53BE-4B2D-BA7A-3FF71A57FA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F75D6D2-53BE-4B2D-BA7A-3FF71A57FA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C47404FC-DB3D-4F70-ACD5-28F2C0E763E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C47404FC-DB3D-4F70-ACD5-28F2C0E763E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C47404FC-DB3D-4F70-ACD5-28F2C0E763E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C47404FC-DB3D-4F70-ACD5-28F2C0E763E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

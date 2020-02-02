@@ -2,11 +2,6 @@
 
 a product management software's back-end api project which adopt ddd and cqrs thoughts and based on asp.net core web api.
 
-<p align="left">
-<a href="https://github.com/Lanesra712/ingos-server">
-	<img src="https://github.com/Lanesra712/ingos-server/workflows/.NET%20Core/badge.svg?branch=master" alt="Github Actions Status">
-</a>
-</P>
 
 
 

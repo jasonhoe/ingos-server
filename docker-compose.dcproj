@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>24f390d4-42f7-4449-b765-77fd4d6bd1d8</ProjectGuid>
+    <ProjectGuid>c47404fc-db3d-4f70-acd5-28f2c0e763e8</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>ingos.api</DockerServiceName>
