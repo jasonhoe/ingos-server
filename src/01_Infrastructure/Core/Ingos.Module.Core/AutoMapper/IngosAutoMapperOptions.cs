@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
 
-namespace Ingos.Module.Core.AutoMapper
+namespace Ingos.Infrastructure.Core.AutoMapper
 {
     public class IngosAutoMapperOptions
     {

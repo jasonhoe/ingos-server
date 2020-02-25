@@ -34,7 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\01_Infrastructure\Core\Ingos.Api.Core\Ingos.Api.Core.csproj" />
-    <ProjectReference Include="..\01_Infrastructure\Core\Ingos.Module.Core\Ingos.Module.Core.csproj" />
+    <ProjectReference Include="..\01_Infrastructure\Core\Ingos.Module.Core\Ingos.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\01_Infrastructure\Ingos.Infrastructure\Ingos.Infrastructure.csproj" />
     <ProjectReference Include="..\03_Application\Ingos.Application\Ingos.Application.csproj" />
   </ItemGroup>

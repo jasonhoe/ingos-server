@@ -10,14 +10,13 @@
 using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Ingos.Domain.SeedWorks
+namespace Ingos.Domain.Abstractions
 {
     /// <summary>
     /// Abstract domain object base class
     /// </summary>
-    /// <typeparam name="TPrimaryKey"></typeparam>
+    /// <typeparam name="TPrimaryKey">Primary key</typeparam>
     public abstract class EntityBase<TPrimaryKey>
     {
         #region Domain Attributes
@@ -135,8 +134,8 @@ namespace Ingos.Domain.SeedWorks
     }
 
     /// <summary>
-    /// Guid 类型主键实体基类
+    /// The base entity of type long
     /// </summary>
-    public abstract class EntityBase : EntityBase<Guid>
+    public abstract class EntityBase : EntityBase<long>
     { }
 }

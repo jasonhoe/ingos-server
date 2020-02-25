@@ -7,7 +7,6 @@
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
-using Ingos.Domain.SeedWorks.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Text;

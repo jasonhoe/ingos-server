@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ingos.Domain.SeedWorks
+namespace Ingos.Domain.Abstractions
 {
     public abstract class ValueObjectBase<T> where T : ValueObjectBase<T>
     {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,5 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
+    <ProjectReference Include="..\Core\Ingos.Module.Core\Ingos.Infrastructure.Core.csproj" />
   </ItemGroup>
 </Project>

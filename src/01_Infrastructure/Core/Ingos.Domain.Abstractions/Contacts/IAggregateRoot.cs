@@ -3,17 +3,13 @@
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2020/1/28 20:20:21
+// Created DateTime: 2020/2/25 19:51:44
 // Modified by:
-// Description:
+// Description: The aggregate root entity's base interface
 //-----------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Ingos.Domain.SeedWorks.Contacts
+namespace Ingos.Domain.Abstractions.Contacts
 {
     public interface IAggregateRoot
-    {
-    }
+    { }
 }

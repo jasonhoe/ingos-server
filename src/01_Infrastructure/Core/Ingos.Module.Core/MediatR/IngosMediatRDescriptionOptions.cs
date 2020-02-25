@@ -10,7 +10,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Ingos.Module.Core.MediatR
+namespace Ingos.Infrastructure.Core.MediatR
 {
     public class IngosMediatRDescriptionOptions
     {

@@ -1,25 +1,28 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "IngosApplicationDbContext.cs">
+// <copyright file= "ProdcutContext.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
 // Created DateTime: 2020/1/28 19:54:06
 // Modified by:
-// Description: Ingos's application database context object
+// Description: Application database context object
 //-----------------------------------------------------------------------
+using Ingos.Infrastructure.Core.EntityFrameworkCore;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ingos.Infrastructure
 {
-    public class IngosApplicationDbContext : DbContext
+    public class ProdcutContext : IngosBaseContext
     {
-        public IngosApplicationDbContext(DbContextOptions<IngosApplicationDbContext> options)
-            : base(options)
-        {
-        }
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="mediator"></param>
+        public ProdcutContext(DbContextOptions options, IMediator mediator)
+            : base(options, mediator)
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

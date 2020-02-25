@@ -7,15 +7,12 @@
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
-using Ingos.Domain.SeedWorks;
+using Ingos.Domain.Abstractions;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Ingos.Infrastructure
+namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Extensions
 {
     public static class IngosMediatorExtension
     {
@@ -25,7 +22,7 @@ namespace Ingos.Infrastructure
         /// <param name="mediator"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task DispatchDomainEventsAsync(this IMediator mediator, IngosApplicationDbContext context)
+        public static async Task DispatchDomainEventsAsync(this IMediator mediator, IngosBaseContext context)
         {
             var domainEntities = context.ChangeTracker
                 .Entries<EntityBase>()

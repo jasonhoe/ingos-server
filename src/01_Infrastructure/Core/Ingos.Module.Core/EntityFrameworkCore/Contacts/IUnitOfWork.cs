@@ -3,29 +3,28 @@
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2020/1/28 20:27:20
+// Created DateTime: 2020/2/25 19:52:24
 // Modified by:
-// Description:
+// Description: The unit of work interface
 //-----------------------------------------------------------------------
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ingos.Domain.SeedWorks.Contacts
+namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Contacts
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         /// <summary>
-        ///
+        /// Commit transaction and returns the number of affected rows
         /// </summary>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Async task cancel token</param>
         /// <returns></returns>
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
-        ///
+        /// Commit transaction and returns whether this operation is successful
         /// </summary>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Async task cancel token</param>
         /// <returns></returns>
         Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default);
     }

@@ -10,7 +10,7 @@
 using AutoMapper;
 using System;
 
-namespace Ingos.Module.Core.AutoMapper.Converters
+namespace Ingos.Infrastructure.Core.AutoMapper.Converters
 {
     /// <summary>
     /// Convert date to string with yyyy-MM-dd format
