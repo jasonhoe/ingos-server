@@ -7,13 +7,15 @@
 // Modified by:
 // Description:
 //-----------------------------------------------------------------------
+using Ingos.Domain.AggregateModels.ProductAggregates;
+using Ingos.Infrastructure.Core.EntityFrameworkCore.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Ingos.Infrastructure.Repositories.Products.Contacts
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product, long>
     {
     }
 }

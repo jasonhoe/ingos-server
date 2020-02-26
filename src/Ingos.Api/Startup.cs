@@ -41,12 +41,12 @@ namespace Ingos.Api
             //});
 
             // Config mysql server database connection
-            services.AddDbContext<ProdcutContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("IngosApplication")));
 
             // Config basic api's health checks
             services.AddHealthChecks()
-                    .AddDbContextCheck<ProdcutContext>();
+                    .AddDbContextCheck<ApplicationDbContext>();
 
             // Use lowercase urls router mode
             services.AddRouting(options =>

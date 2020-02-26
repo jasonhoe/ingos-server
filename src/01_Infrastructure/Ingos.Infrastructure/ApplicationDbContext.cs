@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ProdcutContext.cs">
+// <copyright file= "ApplicationDbContext.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -13,14 +13,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ingos.Infrastructure
 {
-    public class ProdcutContext : IngosBaseContext
+    public class ApplicationDbContext : IngosBaseContext
     {
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="options"></param>
         /// <param name="mediator"></param>
-        public ProdcutContext(DbContextOptions options, IMediator mediator)
+        public ApplicationDbContext(DbContextOptions options, IMediator mediator)
             : base(options, mediator)
         { }
 

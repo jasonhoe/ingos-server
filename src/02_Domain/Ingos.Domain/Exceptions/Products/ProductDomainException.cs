@@ -13,7 +13,7 @@ namespace Ingos.Domain.Exceptions.Products
 {
     public class ProductDomainException : Exception
     {
-        #region Ctos
+        #region Ctors
 
         public ProductDomainException()
         {
@@ -29,6 +29,6 @@ namespace Ingos.Domain.Exceptions.Products
         {
         }
 
-        #endregion Ctos
+        #endregion Ctors
     }
 }
