@@ -22,54 +22,9 @@ namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Contacts
     public interface IRepository<TEntity, TPrimaryKey> where TEntity : EntityBase<TPrimaryKey>, IAggregateRoot
     {
         /// <summary>
-        /// The instance of unit of work
+        /// Unit of work object
         /// </summary>
         IUnitOfWork UnitOfWork { get; }
-
-        /// <summary>
-        /// Insert aggreate root entity
-        /// </summary>
-        /// <param name="entity">The aggreate root entity</param>
-        /// <returns></returns>
-        TEntity Insert(TEntity entity);
-
-        /// <summary>
-        /// Insert aggreate root entity
-        /// </summary>
-        /// <param name="entity">The aggreate root entity</param>
-        /// <param name="cancellationToken">Async task cancel token</param>
-        /// <returns></returns>
-        Task<TEntity> InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Update aggreate root entity
-        /// </summary>
-        /// <param name="entity">The aggreate root entity</param>
-        /// <returns></returns>
-        TEntity Update(TEntity entity);
-
-        /// <summary>
-        /// Update aggreate root entity
-        /// </summary>
-        /// <param name="entity">The aggreate root entity</param>
-        /// <param name="cancellationToken">Async task cancel token</param>
-        /// <returns></returns>
-        Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Remove aggreate root entity
-        /// </summary>
-        /// <param name="entity">The aggreate root entity</param>
-        /// <returns></returns>
-        TEntity Remove(TEntity entity);
-
-        /// <summary>
-        /// Remove aggreate root entity
-        /// </summary>
-        /// <param name="entity">The aggreate root entity</param>
-        /// <param name="cancellationToken">Async task cancel token</param>
-        /// <returns></returns>
-        Task<TEntity> RemoveAsync(TEntity entity, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete aggreate root entity by primary key
@@ -100,5 +55,50 @@ namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Contacts
         /// <param name="cancellationToken">Async task cancel token</param>
         /// <returns></returns>
         Task<TEntity> GetEntityByIdAsync(TPrimaryKey id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Insert aggreate root entity
+        /// </summary>
+        /// <param name="entity">The aggreate root entity</param>
+        /// <returns></returns>
+        TEntity Insert(TEntity entity);
+
+        /// <summary>
+        /// Insert aggreate root entity
+        /// </summary>
+        /// <param name="entity">The aggreate root entity</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns></returns>
+        Task<TEntity> InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Remove aggreate root entity
+        /// </summary>
+        /// <param name="entity">The aggreate root entity</param>
+        /// <returns></returns>
+        bool Remove(TEntity entity);
+
+        /// <summary>
+        /// Remove aggreate root entity
+        /// </summary>
+        /// <param name="entity">The aggreate root entity</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns></returns>
+        Task<bool> RemoveAsync(TEntity entity, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update aggreate root entity
+        /// </summary>
+        /// <param name="entity">The aggreate root entity</param>
+        /// <returns></returns>
+        TEntity Update(TEntity entity);
+
+        /// <summary>
+        /// Update aggreate root entity
+        /// </summary>
+        /// <param name="entity">The aggreate root entity</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns></returns>
+        Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
     }
 }
